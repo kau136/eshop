@@ -20,7 +20,7 @@ const morgan = require('morgan');
 require('dotenv').config();
 
 var store = new MongoDBStore({
-  uri: "mongodb+srv://shivam:Shiv7132@cluster0.hfqxk.mongodb.net/myDatabase?retryWrites=true&w=majority",
+  uri: `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.bbvpu.mongodb.net/${process.env.MONGO_DEFAULT_DATABASE}?retryWrites=true&w=majority`,
   collection: "mySessions",
 });
 
@@ -106,7 +106,8 @@ app.use((error, req, res, next) => {
   console.log(error);
   res.redirect("/500");
 });
-const MONGO_URI=`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.hfqxk.mongodb.net/${process.env.MONGO_DEFAULT_DATABASE}?retryWrites=true&w=majority`;
+const MONGO_URI= `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.bbvpu.mongodb.net/${process.env.MONGO_DEFAULT_DATABASE}?retryWrites=true&w=majority`;
+
 
 mongoose
   .connect(MONGO_URI)

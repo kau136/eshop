@@ -9,3 +9,6 @@ exports.get500 = (req, res, next) => {
   isAuthenticated: req.session.isLoggedIn,
 });
 };
+
+
+
