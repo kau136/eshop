@@ -1,7 +1,7 @@
 const express = require("express");
 const path = require("path");
 const fs = require("fs");
-
+const hostname = '0.0.0.0'
 const bodyParser = require("body-parser");
 const app = express();
 const User = require("./models/user");
@@ -113,7 +113,9 @@ mongoose
   .connect(MONGO_URI)
   .then((result) => {
     console.log("database connected successfully");
-    app.listen(process.env.PORT || 3000);
+    app.listen(process.env.PORT || 3000, hostname, ()=>{
+      console.log('started')
+    });
   })
   .catch((err) => {
     console.log(err);
